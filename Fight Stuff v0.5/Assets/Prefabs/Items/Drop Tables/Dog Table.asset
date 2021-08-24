@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 459e7998d261c454d8fb35b7b45f78e9, type: 3}
+  m_Name: Dog Table
+  m_EditorClassIdentifier: 
+  maxRoll: 100
+  drops:
+  - itemDrop: {fileID: 11400000, guid: 30dfef330a8739147b97229acef3a3f4, type: 2}
+    lootChance: 50
+  - itemDrop: {fileID: 11400000, guid: 5996fa257a8a198409d74c1689b1d1fe, type: 2}
+    lootChance: 50
