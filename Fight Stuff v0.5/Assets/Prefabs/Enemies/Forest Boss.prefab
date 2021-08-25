@@ -149,6 +149,10 @@ MonoBehaviour:
   maxHealth:
     baseValue: 200
   damage:
+    baseValue: 0
+  minDamage:
+    baseValue: 1
+  maxDamage:
     baseValue: 10
   armor:
     baseValue: 3

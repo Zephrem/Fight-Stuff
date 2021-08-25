@@ -8,6 +8,9 @@ public class Player_Stats : Character_Stats
     public int level { get; private set; }
     public int xpToLevel { get; private set; }
 
+    int healthMod;
+    int damageMod;
+
 
 
     // Start is called before the first frame update
@@ -23,13 +26,15 @@ public class Player_Stats : Character_Stats
         if(newItem != null)
         {
             armor.AddModifier(newItem.armorMod);
-            damage.AddModifier(newItem.damageMod);
+            minDamage.AddModifier(newItem.minDamageMod);
+            maxDamage.AddModifier(newItem.maxDamageMod);
         }
 
         if(oldItem != null)
         {
             armor.RemoveModifier(oldItem.armorMod);
-            damage.RemoveModifier(oldItem.damageMod);
+            minDamage.RemoveModifier(oldItem.minDamageMod);
+            maxDamage.RemoveModifier(oldItem.maxDamageMod);
         }
     }
 
@@ -46,10 +51,23 @@ public class Player_Stats : Character_Stats
             while(xp >= xpToLevel)
             {
                 level += 1;
+                LevelUp();
                 xp -= xpToLevel;
                 xpToLevel = NextLevel();
             }
         }
+    }
+
+    void LevelUp()
+    {
+        maxHealth.RemoveModifier(healthMod);
+        maxDamage.RemoveModifier(damageMod);
+
+        healthMod = level * 1;
+        damageMod = Mathf.FloorToInt(level * 0.5f);
+
+        maxHealth.AddModifier(healthMod);
+        maxDamage.AddModifier(damageMod);
     }
 
     public override void Die()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine;
 using Spine.Unity;
+using UnityEngine.SceneManagement;
 
 public class Player_Manager : MonoBehaviour
 {
@@ -32,7 +33,6 @@ public class Player_Manager : MonoBehaviour
 
     public void KillPlayer()
     {
-        Debug.Log("Killing Player");
         myAnim.AnimationState.SetAnimation(0, "Death", false);
         myAnim.AnimationState.Complete += OnDeadAnimComplete;
     }
@@ -41,14 +41,13 @@ public class Player_Manager : MonoBehaviour
     {
         myAnim.AnimationState.Complete -= OnDeadAnimComplete;
 
-        Debug.Log("Animation Complete");
         StartCoroutine(Respawn());
     }
 
     IEnumerator Respawn()
     {
-        yield return new WaitForSeconds(1f);
         GameObject.Find("Game Manager").GetComponent<Scene_Swapper>().LoadScene(1);
+        yield return new WaitWhile(() => SceneManager.GetSceneByBuildIndex(1).isLoaded == false);
         myStats.Heal(myStats.maxHealth.GetValue());
         myAnim.AnimationState.AddAnimation(0, "Idle", true, 0);
     }

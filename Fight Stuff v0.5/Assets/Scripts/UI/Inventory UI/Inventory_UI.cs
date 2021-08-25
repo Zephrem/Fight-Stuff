@@ -23,7 +23,14 @@ public class Inventory_UI : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory"))
         {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
+            if (inventoryUI.transform.localScale == new Vector3(1, 1, 1))
+            {
+                inventoryUI.transform.localScale = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                inventoryUI.transform.localScale = new Vector3(1, 1, 1);
+            }
         }
     }
 
@@ -31,7 +38,7 @@ public class Inventory_UI : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if(i < inventory.items.Count)
+            if (i < inventory.items.Count)
             {
                 slots[i].AddItem(inventory.items[i]);
             }

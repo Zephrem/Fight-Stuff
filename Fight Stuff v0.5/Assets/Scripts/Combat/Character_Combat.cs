@@ -13,6 +13,8 @@ public class Character_Combat : MonoBehaviour
 
     public void Attack(Character_Stats targetStats)
     {
-        targetStats.TakeDamage(myStats.damage.GetValue());
+        int damage;
+        damage = Random.Range(myStats.minDamage.GetValue(), myStats.maxDamage.GetValue() + 1);
+        targetStats.TakeDamage(damage);
     }
 }

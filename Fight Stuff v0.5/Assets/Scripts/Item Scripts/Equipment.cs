@@ -8,7 +8,8 @@ public class Equipment : Item
     public EquipmentSlot equipSlot;
     
     public int armorMod;
-    public int damageMod;
+    public int minDamageMod;
+    public int maxDamageMod;
 
     public override void Use()
     {

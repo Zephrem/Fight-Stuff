@@ -12,7 +12,8 @@ public class Character_Stats : MonoBehaviour
     public int currentHealth { get; private set; }
 
     public Stat maxHealth;
-    public Stat damage;
+    public Stat minDamage;
+    public Stat maxDamage;
     public Stat armor;
     public Stat attackDelay;
     public int xp;
@@ -28,6 +29,8 @@ public class Character_Stats : MonoBehaviour
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
         currentHealth -= damage;
+
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth.GetValue());
 
         if(OnTakeDamageCallback != null)
         {

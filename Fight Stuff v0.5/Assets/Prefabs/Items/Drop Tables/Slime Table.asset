@@ -15,6 +15,6 @@ MonoBehaviour:
   maxRoll: 100
   drops:
   - itemDrop: {fileID: 11400000, guid: 7721bb758ff09a144a91a57a103695cf, type: 2}
-    lootChance: 10
-  - itemDrop: {fileID: 11400000, guid: 3fba2e605966e3640be92e9f722bf8a3, type: 2}
     lootChance: 90
+  - itemDrop: {fileID: 11400000, guid: 3fba2e605966e3640be92e9f722bf8a3, type: 2}
+    lootChance: 10

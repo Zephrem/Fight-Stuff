@@ -79,7 +79,6 @@ public class Enemy_Stats : Character_Stats
                 if (slot.state == Ability_Slot.AbilityState.ready)
                 {
                     slot.Cast(this, playerStats);
-                    Debug.Log(this.name + " casts " + slot.ability.name);
                 }
             }
         }

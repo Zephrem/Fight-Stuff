@@ -40,6 +40,7 @@ public class Inventory_Manager : MonoBehaviour
                 if (inventoryItem.name == item.name)
                 {
                     inventoryItem.amount += item.amount;
+                    inventoryItem.amount = Mathf.Clamp(inventoryItem.amount, 0, inventoryItem.stackSize);
                     inInventory = true;
                 }
             }

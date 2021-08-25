@@ -1,20 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Equipment_UI : MonoBehaviour
 {
     public Transform equipmentParent;
     public GameObject equipmentUI;
 
-    Equipment_Manager equipmentManager;
-
     Equipment_Slot[] slots;
 
     // Start is called before the first frame update
     void Start()
     {
-        equipmentManager = Equipment_Manager.instance;
-        equipmentManager.onEquipmentChanged += UpdateUI;
-
+        Equipment_Manager.instance.onEquipmentChanged += UpdateUI;
         slots = equipmentParent.GetComponentsInChildren<Equipment_Slot>();
     }
 
@@ -23,7 +20,14 @@ public class Equipment_UI : MonoBehaviour
     {
         if (Input.GetButtonDown("Equipment"))
         {
-            equipmentUI.SetActive(!equipmentUI.activeSelf);
+            if (equipmentUI.transform.localScale == new Vector3(1, 1, 1))
+            {
+                equipmentUI.transform.localScale = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                equipmentUI.transform.localScale = new Vector3(1, 1, 1);
+            }
         }
     }
 

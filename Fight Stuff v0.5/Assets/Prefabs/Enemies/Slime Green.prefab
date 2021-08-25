@@ -136,16 +136,18 @@ MonoBehaviour:
   maxHealth:
     baseValue: 10
   damage:
+    baseValue: 0
+  minDamage:
+    baseValue: 1
+  maxDamage:
     baseValue: 1
   armor:
     baseValue: 0
   attackDelay:
     baseValue: 2
   xp: 10
-  battleManager: {fileID: 0}
   dropTable: {fileID: 11400000, guid: 575921e9e74694243a52821e69b4aa41, type: 2}
   abilityPool: {fileID: 9031928677104926968}
-  playerStats: {fileID: 0}
 --- !u!114 &5145449356326231794
 MonoBehaviour:
   m_ObjectHideFlags: 0

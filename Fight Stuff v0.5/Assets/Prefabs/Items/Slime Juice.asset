@@ -15,5 +15,6 @@ MonoBehaviour:
   name: Slime Juice
   icon: {fileID: 0}
   isStackable: 1
+  stackSize: 10
   amount: 1
   healAmount: 2
