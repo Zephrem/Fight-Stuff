@@ -3,7 +3,7 @@
 public class Character_Stats : MonoBehaviour
 {
 
-    public delegate void OnTakeDamage(int value);
+    public delegate void OnTakeDamage(int value, bool isCritical);
     public OnTakeDamage OnTakeDamageCallback;
 
     public delegate void OnHeal(int value);
@@ -14,6 +14,7 @@ public class Character_Stats : MonoBehaviour
     public Stat maxHealth;
     public Stat minDamage;
     public Stat maxDamage;
+    public Stat critChance;
     public Stat armor;
     public Stat attackDelay;
     public int xp;
@@ -23,8 +24,14 @@ public class Character_Stats : MonoBehaviour
         currentHealth = maxHealth.GetValue();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool isCritical)
     {
+
+        if (isCritical)
+        {
+            damage *= 2;
+        }
+
         damage -= armor.GetValue();
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
@@ -34,7 +41,7 @@ public class Character_Stats : MonoBehaviour
 
         if(OnTakeDamageCallback != null)
         {
-            OnTakeDamageCallback.Invoke(damage);
+            OnTakeDamageCallback.Invoke(damage, isCritical);
         }
         
         if(currentHealth <= 0)

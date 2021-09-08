@@ -14,7 +14,15 @@ public class Character_Combat : MonoBehaviour
     public void Attack(Character_Stats targetStats)
     {
         int damage;
+        bool isCritical = false;
+
         damage = Random.Range(myStats.minDamage.GetValue(), myStats.maxDamage.GetValue() + 1);
-        targetStats.TakeDamage(damage);
+
+        if (Random.Range(0, 100) < myStats.critChance.GetValue())
+        {
+            isCritical = true;
+        }
+
+        targetStats.TakeDamage(damage, isCritical);
     }
 }

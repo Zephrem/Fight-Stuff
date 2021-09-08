@@ -36,9 +36,10 @@ public class Battle_Manager : MonoBehaviour
         playerCombat = playerGo.GetComponent<Character_Combat>();
         playerAnim = playerGo.GetComponentInChildren<SkeletonAnimation>();
 
-        playerStats.OnTakeDamageCallback += PlayerPopup;
+        playerStats.OnTakeDamageCallback += PlayerDamagePopup;
         playerStats.OnTakeDamageCallback += StationUpdate;
         playerStats.OnHealCallback += StationUpdate;
+        playerStats.OnHealCallback += PlayerHealPopup;
         playerAnim.AnimationState.Event += OnPlayerAttackAnimFinish;
 
         foreach (Player_Ability_Slot slot in playerGo.GetComponents<Player_Ability_Slot>())
@@ -132,17 +133,32 @@ public class Battle_Manager : MonoBehaviour
         }
     }
 
-    public void PlayerPopup(int damage)
+    #region POPUPS
+
+    public void PlayerDamagePopup(int damage, bool isCritical)
     {
         Vector2 sliderPos = playerStation.hp.transform.position;
-        Damage_Popup.Create(sliderPos, damage);
+        Damage_Popup.Create(sliderPos, damage, isCritical, false);
     }
 
-    public void EnemyPopup(int damage)
+    public void PlayerHealPopup(int damage)
+    {
+        Vector2 sliderPos = playerStation.hp.transform.position;
+        Damage_Popup.Create(sliderPos, damage, false, true);
+    }
+
+    public void EnemyDamagePopup(int damage, bool isCritical)
     {
         Vector2 sliderPos = enemyStation.hp.transform.position;
-        Damage_Popup.Create(sliderPos, damage);
+        Damage_Popup.Create(sliderPos, damage, isCritical, false);
     }
+    public void EnemyHealPopup(int damage)
+    {
+        Vector2 sliderPos = enemyStation.hp.transform.position;
+        Damage_Popup.Create(sliderPos, damage, false, true);
+    }
+
+    #endregion
 
     public IEnumerator DelayedSpawn()
     {
@@ -175,9 +191,10 @@ public class Battle_Manager : MonoBehaviour
     {
         if (enemyGo != null)
         {
-            enemyStats.OnTakeDamageCallback -= EnemyPopup;
+            enemyStats.OnTakeDamageCallback -= EnemyDamagePopup;
             enemyStats.OnTakeDamageCallback -= StationUpdate;
             enemyStats.OnHealCallback -= StationUpdate;
+            enemyStats.OnHealCallback -= EnemyHealPopup;
             enemyAnim.AnimationState.Event -= OnEnemyAttackAnimFinish;
 
             Destroy(enemyGo);
@@ -191,13 +208,24 @@ public class Battle_Manager : MonoBehaviour
         enemyCombat = enemyGo.GetComponent<Character_Combat>();
         enemyAnim = enemyGo.GetComponent<SkeletonAnimation>();
 
-        enemyStats.OnTakeDamageCallback += EnemyPopup;
+        enemyStats.OnTakeDamageCallback += EnemyDamagePopup;
         enemyStats.OnTakeDamageCallback += StationUpdate;
         enemyStats.OnHealCallback += StationUpdate;
+        enemyStats.OnHealCallback += EnemyHealPopup;
         enemyAnim.AnimationState.Event += OnEnemyAttackAnimFinish;
     }
 
-    public void StationUpdate(int i)
+    public void StationUpdate(int x, bool y)
+    {
+        playerStation.SetUI(playerGo);
+
+        if (enemyGo)
+        {
+            enemyStation.SetUI(enemyGo);
+        }
+    }
+
+    public void StationUpdate(int x)
     {
         playerStation.SetUI(playerGo);
 
@@ -209,10 +237,11 @@ public class Battle_Manager : MonoBehaviour
 
     private void OnDestroy()
     {
-        playerStats.OnTakeDamageCallback -= PlayerPopup;
+        playerStats.OnTakeDamageCallback -= PlayerDamagePopup;
         playerStats.OnTakeDamageCallback -= StationUpdate;
         playerStats.OnHealCallback -= StationUpdate;
         playerAnim.AnimationState.Event -= OnPlayerAttackAnimFinish;
+        playerStats.OnHealCallback -= PlayerHealPopup;
 
         foreach (Player_Ability_Slot slot in playerGo.GetComponents<Player_Ability_Slot>())
         {

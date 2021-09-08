@@ -23,7 +23,7 @@ public class Leech_Ability : Ability
 
         while (totalTicks > 0 && targetStats.currentHealth > 0 && myStats.currentHealth > 0)
         {
-            targetStats.TakeDamage(drainAmount);
+            targetStats.TakeDamage(drainAmount, false);
             myStats.Heal(drainAmount);
 
             totalTicks -= 1;

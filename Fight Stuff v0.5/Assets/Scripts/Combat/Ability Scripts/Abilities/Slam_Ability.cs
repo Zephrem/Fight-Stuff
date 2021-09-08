@@ -10,6 +10,6 @@ public class Slam_Ability : Ability
 
     public override void Cast(Character_Stats myStats, Character_Stats targetStats)
     {
-        targetStats.TakeDamage(Mathf.RoundToInt(myStats.maxDamage.GetValue() * damageMod));
+        targetStats.TakeDamage(Mathf.RoundToInt(myStats.maxDamage.GetValue() * damageMod), false);
     }
 }
