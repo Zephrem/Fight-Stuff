@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Slime Juice
   m_EditorClassIdentifier: 
   name: Slime Juice
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 884f24010b3ae7a45aaf00cfe6c977d0, type: 3}
   isStackable: 1
   stackSize: 10
   amount: 1

@@ -6,9 +6,7 @@ public class Inventory_Slot : MonoBehaviour
 {
     Item item;
 
-    public string defaultText = "Empty";
-
-    public TextMeshProUGUI itemText;
+    public Image itemIcon;
 
     public void AddItem (Item newItem)
     {
@@ -16,18 +14,22 @@ public class Inventory_Slot : MonoBehaviour
 
         if (newItem.isStackable)
         {
-            itemText.text = item.name + " x " + item.amount;
+            //Add a stack number.
+            itemIcon.sprite = item.icon;
+            itemIcon.color = new Color32(255, 255, 255, 255);
         }
         else
         {
-            itemText.text = item.name;
+            itemIcon.sprite = item.icon;
+            itemIcon.color = new Color32(255, 255, 255, 255);
         }
     }
 
     public void ClearSlot()
     {
         item = null;
-        itemText.text = defaultText;
+        itemIcon.sprite = null;
+        itemIcon.color = new Color32(0, 0, 0, 0);
     }
 
     public void UseItem()

@@ -15,22 +15,6 @@ public class Equipment_UI : MonoBehaviour
         slots = equipmentParent.GetComponentsInChildren<Equipment_Slot>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Equipment"))
-        {
-            if (equipmentUI.transform.localScale == new Vector3(1, 1, 1))
-            {
-                equipmentUI.transform.localScale = new Vector3(0, 0, 0);
-            }
-            else
-            {
-                equipmentUI.transform.localScale = new Vector3(1, 1, 1);
-            }
-        }
-    }
-
     void UpdateUI(Equipment newItem, Equipment oldItem)
     {
         for(int i = 0; i < slots.Length; i++)
@@ -43,6 +27,18 @@ public class Equipment_UI : MonoBehaviour
             {
                 slots[i].ClearSlot();
             }
+        }
+    }
+
+    public void ToggleUI()
+    {
+        if (equipmentUI.transform.localScale == new Vector3(1, 1, 1))
+        {
+            equipmentUI.transform.localScale = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            equipmentUI.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }

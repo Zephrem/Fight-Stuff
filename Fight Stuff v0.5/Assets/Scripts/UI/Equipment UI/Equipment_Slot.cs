@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Equipment_Slot : MonoBehaviour
@@ -10,8 +11,10 @@ public class Equipment_Slot : MonoBehaviour
     Equipment_Manager equipmentManager;
 
     public string defaultText = "Empty";
+    public Sprite defaultIcon;
 
     public TextMeshProUGUI equipmentText;
+    public Image equipmentIcon;
 
     public EquipmentSlot slotType;
 
@@ -19,19 +22,23 @@ public class Equipment_Slot : MonoBehaviour
     {
         equipmentManager = Equipment_Manager.instance;
 
-        equipmentText.text = defaultText;
+        //equipmentText.text = defaultText;
+
+        equipmentIcon.sprite = defaultIcon;
     }
 
     public void AddEquipment(Equipment newEquipment)
     {
         equipment = newEquipment;
-        equipmentText.text = equipment.name;
+        //equipmentText.text = equipment.name;
+        equipmentIcon.sprite = equipment.icon;
     }
 
     public void ClearSlot()
     {
         equipment = null;
-        equipmentText.text = defaultText;
+        //equipmentText.text = defaultText;
+        equipmentIcon.sprite = defaultIcon;
     }
 
     public void UseEquipment()

@@ -18,22 +18,6 @@ public class Inventory_UI : MonoBehaviour
         slots = itemsParent.GetComponentsInChildren<Inventory_Slot>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Inventory"))
-        {
-            if (inventoryUI.transform.localScale == new Vector3(1, 1, 1))
-            {
-                inventoryUI.transform.localScale = new Vector3(0, 0, 0);
-            }
-            else
-            {
-                inventoryUI.transform.localScale = new Vector3(1, 1, 1);
-            }
-        }
-    }
-
     void UpdateUI()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -46,6 +30,18 @@ public class Inventory_UI : MonoBehaviour
             {
                 slots[i].ClearSlot();
             }
+        }
+    }
+
+    public void ToggleUI()
+    {
+        if (inventoryUI.transform.localScale == new Vector3(1, 1, 1))
+        {
+            inventoryUI.transform.localScale = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            inventoryUI.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }
