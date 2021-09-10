@@ -8,10 +8,11 @@ public class Station_UI : MonoBehaviour
 {
     public Slider hp;
     public Slider delay;
+    public Transform stand;
 
     public virtual void SetUI(GameObject character)
     {
-        character.transform.position = this.transform.position;
+        character.transform.position = stand.position;
         gameObject.SetActive(true);
         hp.maxValue = character.GetComponent<Character_Stats>().maxHealth.GetValue();
         hp.value = character.GetComponent<Character_Stats>().currentHealth;

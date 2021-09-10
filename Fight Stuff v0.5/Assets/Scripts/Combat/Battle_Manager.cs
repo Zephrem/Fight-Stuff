@@ -137,24 +137,24 @@ public class Battle_Manager : MonoBehaviour
 
     public void PlayerDamagePopup(int damage, bool isCritical)
     {
-        Vector2 sliderPos = playerStation.hp.transform.position;
+        Vector2 sliderPos = playerStation.stand.position;
         Damage_Popup.Create(sliderPos, damage, isCritical, false);
     }
 
     public void PlayerHealPopup(int damage)
     {
-        Vector2 sliderPos = playerStation.hp.transform.position;
+        Vector2 sliderPos = playerStation.stand.position;
         Damage_Popup.Create(sliderPos, damage, false, true);
     }
 
     public void EnemyDamagePopup(int damage, bool isCritical)
     {
-        Vector2 sliderPos = enemyStation.hp.transform.position;
+        Vector2 sliderPos = enemyStation.stand.position;
         Damage_Popup.Create(sliderPos, damage, isCritical, false);
     }
     public void EnemyHealPopup(int damage)
     {
-        Vector2 sliderPos = enemyStation.hp.transform.position;
+        Vector2 sliderPos = enemyStation.stand.position;
         Damage_Popup.Create(sliderPos, damage, false, true);
     }
 

@@ -6,7 +6,7 @@ using TMPro;
 
 public class Boss_Button_UI : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
+    //[SerializeField] private Slider slider;
     [SerializeField] private Button button;
 
     private Boss_Progress bossProgress;
@@ -15,14 +15,14 @@ public class Boss_Button_UI : MonoBehaviour
     {
         bossProgress = gameObject.GetComponent<Boss_Progress>();
 
-        slider.maxValue = bossProgress.maxProgress;
+        //slider.maxValue = bossProgress.maxProgress;
     }
 
     public void UpdateUI()
     {
-        slider.value = bossProgress.currentProgress;
+        //slider.value = bossProgress.currentProgress;
 
-        if (slider.value >= slider.maxValue)
+        if (bossProgress.currentProgress >= bossProgress.maxProgress)
         {
             button.interactable = true;
         }

@@ -785,9 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c6fb528aa08784cadd1c9ee262eea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultText: Empty
   defaultIcon: {fileID: 21300000, guid: c2ef73307e95e414a823738196b9deeb, type: 3}
-  equipmentText: {fileID: 0}
   equipmentIcon: {fileID: 1637313727}
   slotType: 3
 --- !u!114 &127682135
@@ -7585,9 +7583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c6fb528aa08784cadd1c9ee262eea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultText: Empty
   defaultIcon: {fileID: 21300000, guid: c2ef73307e95e414a823738196b9deeb, type: 3}
-  equipmentText: {fileID: 0}
   equipmentIcon: {fileID: 1827489588}
   slotType: 2
 --- !u!114 &1887946641
@@ -8201,9 +8197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c6fb528aa08784cadd1c9ee262eea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultText: Empty
   defaultIcon: {fileID: 21300000, guid: c2ef73307e95e414a823738196b9deeb, type: 3}
-  equipmentText: {fileID: 0}
   equipmentIcon: {fileID: 618910545}
   slotType: 1
 --- !u!114 &1999538632
@@ -8777,6 +8771,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1625176698747313834, guid: 94fb8c9bf39a8b747a11b0ef9116e861,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625176698747313835, guid: 94fb8c9bf39a8b747a11b0ef9116e861,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1625176699135148916, guid: 94fb8c9bf39a8b747a11b0ef9116e861,
         type: 3}
       propertyPath: damage.baseValue
@@ -9043,9 +9047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c6fb528aa08784cadd1c9ee262eea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultText: Empty
   defaultIcon: {fileID: 21300000, guid: c2ef73307e95e414a823738196b9deeb, type: 3}
-  equipmentText: {fileID: 0}
   equipmentIcon: {fileID: 1866517713049929160}
   slotType: 0
 --- !u!114 &1866517714071881101
@@ -9965,7 +9967,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 148.79999, y: -1015}
+  m_AnchoredPosition: {x: 149, y: -1015}
   m_SizeDelta: {x: 300, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7520420898116724410
@@ -10062,7 +10064,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4291295486
-  m_fontColor: {r: 0.99607843, g: 0.972549, b: 0.78039217, a: 1}
+  m_fontColor: {r: 0.9960785, g: 0.9725491, b: 0.7803922, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
